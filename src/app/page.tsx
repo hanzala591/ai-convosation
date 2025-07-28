@@ -1,5 +1,6 @@
 import CompanionCard from "@/components/CompanionCard";
 import CompanionList from "@/components/CompanionList";
+import Cta from "@/components/Cta";
 
 import Navbar from "@/components/Navbar";
 import { recentSessions } from "@/constants";
@@ -12,6 +13,7 @@ export default function Home() {
       <div className="grid pt-4 gap-4 grid-cols-1 md:grid-cols-3">
         {recentSessions.slice(0, 3).map((value, index) => (
           <CompanionCard
+            key={index}
             name={value.name}
             topic={value.topic}
             subject={value.subject}
@@ -20,11 +22,16 @@ export default function Home() {
           />
         ))}
       </div>
-      <div className="pt-7 grid grid-cols-1 md:grid-cols-3">
+      <div className="pt-7 grid gap-4 grid-cols-1 md:grid-cols-3">
         <div className="col-span-2">
-          <CompanionList />
+          <CompanionList
+            title="Recently completed lessons"
+            companions={recentSessions}
+          />
         </div>
-        <div className="col-span-1">sfadfds</div>
+        <div className="col-span-1">
+          <Cta />
+        </div>
       </div>
     </div>
   );

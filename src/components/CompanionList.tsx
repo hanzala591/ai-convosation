@@ -10,56 +10,19 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { CompanionCardProps } from "./CompanionCard";
-import { recentSessions } from "@/constants";
 
-const invoices = [
-  {
-    invoice: "INV001",
-    paymentStatus: "Paid",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "$150.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
-  },
-];
-export default function CompanionList() {
+interface CompanionListProps {
+  title: string;
+  companions: Companion[];
+}
+
+export default function CompanionList({
+  title,
+  companions,
+}: CompanionListProps) {
   return (
     <div className="rounded-3xl p-5 border border-secondary shadow">
-      <h3 className="text-xl font-bold">Recently Completed lessons</h3>
+      <h3 className="text-xl font-bold">{title}</h3>
       <Table className="pt-10">
         <TableHeader>
           <TableRow>
@@ -69,7 +32,7 @@ export default function CompanionList() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {recentSessions.map((value, index) => (
+          {companions.map((value, index) => (
             <TableRow key={index}>
               <TableCell>
                 <div className="flex">

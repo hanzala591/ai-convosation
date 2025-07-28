@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
-interface CompanionCardProps {
+export interface CompanionCardProps {
   subject: string;
   name: string;
   topic: string;
